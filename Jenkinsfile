@@ -2,13 +2,15 @@ pipeline{
     agent none
     stages{  
         stage("Build"){
-             agent{
-            label "agent"
-            image 'java:latest'
+            agent {
+             docker {
+                label "Docker-Host"
+                image 'java:latest'
              }
             steps{
             sh "mvn package"
             }
         }
+    }
     }
 }
