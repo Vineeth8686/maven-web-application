@@ -34,6 +34,7 @@ pipeline {
                     label 'agent' // Use Maven image instead of Java
                     
                 }
+                }
             steps{
                 unstash name: "maven-war-artifact" , message: "UnStashing the file"
                 archiveArtifacts artifacts: '**/*.war', followSymlinks: false
