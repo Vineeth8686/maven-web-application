@@ -2,7 +2,7 @@ pipeline {
     agent none
 
     stages {
-        stage("Clean") {
+        stage("Smoke test") {
             agent {
                 docker {
                     image 'java:1.0'
@@ -12,7 +12,6 @@ pipeline {
             }
             steps {
                 sh "mvn clean"
-                stash includes: 'target/*.jar', name: 'built-artifact'
             }
         }
          stage("Package") {
@@ -20,6 +19,7 @@ pipeline {
                 docker {
                     image 'java:1.0'
                     label 'agent' // Use Maven image instead of Java
+                    args '-v /home/azureuser/.m2:**/.m2'
                     
                 }
             }
