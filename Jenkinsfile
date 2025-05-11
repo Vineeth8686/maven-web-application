@@ -36,7 +36,7 @@ pipeline {
                 }
             steps{
                 unstash name: "maven-war-artifact" , message: "UnStashing the file"
-
+                archiveArtifacts artifacts: '**/*.war', followSymlinks: false
             }
         }
 
