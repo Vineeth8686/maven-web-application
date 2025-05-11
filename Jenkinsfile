@@ -27,5 +27,18 @@ pipeline {
                 stash includes: 'target/*.war', name: 'maven-war-artifact'
             }
         }
+        stage("UnStaching a File"){
+            agent {
+                docker {
+                    image 'java:1.0'
+                    label 'agent' // Use Maven image instead of Java
+                    
+                }
+            steps{
+                unstash name: "maven-war-artifact" , message: "UnStashing the file"
+
+            }
+        }
+
     }
 }
