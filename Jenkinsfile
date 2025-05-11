@@ -1,16 +1,17 @@
-pipeline{
+pipeline {
     agent none
-    stages{  
-        stage("Build"){
+
+    stages {
+        stage("Build") {
             agent {
-             docker {
-                label "Docker-Host"
-                image 'java:latest'
-             }
-            steps{
-            sh "mvn package"
+                docker {
+                    image 'java:latest'
+                    label 'agent' // Use Maven image instead of Java
+                }
+            }
+            steps {
+                sh "mvn package"
             }
         }
-    }
     }
 }
