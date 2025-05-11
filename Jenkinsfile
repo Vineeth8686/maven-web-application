@@ -15,7 +15,7 @@ pipeline {
                 stash includes: 'target/*.jar', name: 'built-artifact'
             }
         }
-         stage("Clean") {
+         stage("Package") {
             agent {
                 docker {
                     image 'java:1.0'
