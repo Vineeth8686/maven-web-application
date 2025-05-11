@@ -5,7 +5,7 @@ pipeline {
         stage("Build") {
             agent {
                 docker {
-                    image 'java:latest'
+                    image 'maven3.8.2'
                     label 'agent' // Use Maven image instead of Java
                 }
             }
