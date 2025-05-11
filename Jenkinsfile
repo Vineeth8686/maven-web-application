@@ -19,8 +19,7 @@ pipeline {
                 docker {
                     image 'java:1.0'
                     label 'agent' // Use Maven image instead of Java
-                    args '-v /home/azureuser/.m2:**/.m2'
-                    
+                    args '-v /home/azureuser/.m2:/root/.m2'
                 }
             }
             steps {
